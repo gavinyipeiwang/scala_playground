@@ -1,2 +1,2 @@
-# funproginscala
-Exercise in scala
+# Functional Programming Principles in Scala
+Some exercises
