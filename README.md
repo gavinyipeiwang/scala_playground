@@ -1,0 +1,2 @@
+# funproginscala
+Exercise in scala
