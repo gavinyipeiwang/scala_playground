@@ -31,7 +31,7 @@ object Main {
    * Exercise 2
    */
   def balance(chars: List[Char]): Boolean = {
-    if (chars.isEmpty) return false
+    if (chars.isEmpty) false
     else {
       def help(chars: List[Char], numOfLeft: Int): Int = {
         if (chars.isEmpty) numOfLeft
