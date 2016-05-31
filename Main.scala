@@ -9,14 +9,6 @@ object Main {
         print(pascal(col, row) + " ")
       println()
     }
-
-    println("Parentheses Balancing")
-    val chars: List[Char] = ":-)".toList
-    println(balance(chars))
-
-    println("Counting Change")
-    val coins = List(1, 5, 10, 20, 50)
-    println(countChange(100, coins))
   }
 
   /**
@@ -31,16 +23,16 @@ object Main {
    * Exercise 2
    */
   def balance(chars: List[Char]): Boolean = {
+
+    def helper(x: Int, chars: List[Char]): Boolean =
+      if (chars.isEmpty) x == 0
+      else if (chars.head == '(') helper(x + 1, chars.tail)
+      else if (chars.head == ')' && x > 0) helper(x - 1, chars.tail)
+      else if (chars.head == ')' && x == 0) false
+      else helper(x, chars.tail)
+
     if (chars.isEmpty) false
-    else {
-      def help(chars: List[Char], numOfLeft: Int): Int = {
-        if (chars.isEmpty) numOfLeft
-        else if (chars.head == '(' && numOfLeft >= 0) help(chars.tail, numOfLeft + 1)
-        else if (chars.head == ')') help(chars.tail, numOfLeft - 1)
-        else help(chars.tail, numOfLeft)
-      }
-      help(chars, 0) == 0
-    }
+    else helper(0, chars)
   }
 
   /**
@@ -49,6 +41,6 @@ object Main {
   def countChange(money: Int, coins: List[Int]): Int = {
     if (money == 0) 1
     else if (money < 0 || coins.isEmpty) 0
-    else countChange(money, coins.tail) + countChange(money - coins.head, coins)
+    else countChange(money - coins.head, coins) + countChange(money, coins.tail)
   }
 }
