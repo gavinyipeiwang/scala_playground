@@ -1,7 +1,3 @@
-# Functional Programming in Scala
+# Scala language playground
 
-## Functional Programming Principles in Scala
-
-1. Recursion
-2. Higher Order Functions
-3. Data and Abstraction
+This repo is just for me to practice scala.
