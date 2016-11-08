@@ -1,5 +1,6 @@
 object Sorting {
 
+
   def mergeSort(xs: Array[Int]): Array[Int] = {
     val n = xs.length / 2
     if (n == 0) xs
