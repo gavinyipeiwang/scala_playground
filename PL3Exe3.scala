@@ -24,4 +24,6 @@ object PL3 {
   def longest_capitalized(xs: List[String]): String = longest_string1(only_capitals(xs))
 
   def rev_string(s: String): String = s.toCharArray.reverse.mkString
+
+  
 }
