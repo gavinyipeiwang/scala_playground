@@ -1,8 +1,9 @@
 
 (* 1 *)
 fun is_older(d1: int * int * int, d2: int * int * int) = 
-	if #1 d1 < #1 d2 orelse (#1 d1 = #1 d2 andalso #2 d1 < #2 d2) orelse (#1 d1 = #1 d2 andalso #2 d1 = #2 d2 andalso #3 d1 < #3 d2) then true
-	else false
+	#1 d1 < #1 d2 
+		orelse (#1 d1 = #1 d2 andalso #2 d1 < #2 d2) 
+			orelse (#1 d1 = #1 d2 andalso #2 d1 = #2 d2 andalso #3 d1 < #3 d2)
 
 (* 2 *)
 fun number_in_month(xs: (int * int * int) list, mth: int) = 
@@ -17,7 +18,7 @@ fun number_in_month(xs: (int * int * int) list, mth: int) =
 
 (* 3 *)
 fun number_in_months(xs: (int * int * int) list, mths: int list) = 
-	if null mths
+	if null xs orelse null mths 
 	then 0 
 	else number_in_month(xs, hd mths) + number_in_months(xs, tl mths)
 
@@ -79,14 +80,9 @@ fun what_month(day: int) =
 
 (* 10 *)
 fun month_range(day1: int, day2: int) = 
-	let
-		fun helper(day: int) = 
-			if day > day2
-			then []
-			else what_month(day) :: helper(day + 1)
-	in
-		helper(day1)
-	end
+	if day1 > day2
+  then []
+  else what_month(day1) :: month_range(day1 + 1, day2)
 
 (* 11 *)
 fun oldest(xs: (int * int * int) list) = 
