@@ -30,8 +30,7 @@ fun dates_in_month(xs: (int * int * int) list, mth: int) =
 
 (* 5 *)
 fun dates_in_months(xs: (int * int * int) list, mths: int list) = 
-	if null mths
-	then []
+	if null mths then []
 	else dates_in_month(xs, hd mths) @ dates_in_months(xs, tl mths)
 
 (* 6 *)
@@ -86,23 +85,19 @@ fun month_range(day1: int, day2: int) =
 
 (* 11 *)
 fun oldest(xs: (int * int * int) list) = 
-	if null xs
-	then NONE
+	if null xs then NONE
 	else 
 			let
 				val tl_oldest = oldest(tl xs)
 			in
-				if isSome tl_oldest andalso is_older(valOf(tl_oldest), hd xs)
-				then tl_oldest
+				if isSome tl_oldest andalso is_older(valOf(tl_oldest), hd xs) then tl_oldest
 				else SOME (hd xs) 
 			end
 
 (* 12 *)
 fun isIn(x: int, lst: int list) = 
-	if null lst
-	then false
-	else if x = hd(lst) then true
-			 else isIn(x, tl lst)
+	if null lst then false
+	else x = hd(lst) orelse isIn(x, tl lst)
 
 (* It's not the best implementation of removing duplicates from a given list. *)
 fun removeDuplicates(xs: int list) = 
