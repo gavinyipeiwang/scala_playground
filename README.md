@@ -2,7 +2,7 @@
 
 This repo is just for me to practice scala, learning the syntax, core API and concepts.
 
-##Fundamental Effects of Programming
+## Fundamental Effects of Programming
 
 |               | One           | Many          |
 | ------------- |:-------------:| -------------:|
