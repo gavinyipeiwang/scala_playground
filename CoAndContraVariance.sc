@@ -22,7 +22,7 @@ class VendingMachine[+A](val currentItem: Option[A], items: List[A]) {
 
 class Drink {}
 
-class SoftDrink extends {}
+class SoftDrink extends Drink {}
 
 class Cola extends SoftDrink {}
 
