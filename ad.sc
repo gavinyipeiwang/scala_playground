@@ -20,9 +20,19 @@ case class Plus(a: Expr, b: Expr) extends Expr
 
 
 object Expr {
-  def eval(e: Expr) = e match {
+  def eval(e: Expr):Int = e match {
     case Number(e) => e
     case Plus(a, b) => eval(a) + eval(b)
   }
 }
+
+
+class A(private val x: Int) {
+  def equals(obj: Any) = obj match {
+    case that: A => x == that.x
+    case _ => false
+  }
+}
+
+
 
