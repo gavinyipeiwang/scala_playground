@@ -1,3 +1,5 @@
+import scala.util.{Failure, Success, Try}
+
 sealed abstract class CardType
 
 case object Visa extends CardType
@@ -20,7 +22,7 @@ case class Plus(a: Expr, b: Expr) extends Expr
 
 
 object Expr {
-  def eval(e: Expr):Int = e match {
+  def eval(e: Expr): Int = e match {
     case Number(e) => e
     case Plus(a, b) => eval(a) + eval(b)
   }
@@ -28,11 +30,41 @@ object Expr {
 
 
 class A(private val x: Int) {
-  def equals(obj: Any) = obj match {
+  override def equals(obj: Any) = obj match {
     case that: A => x == that.x
     case _ => false
   }
 }
+
+def toIntX(s: String): Try[Int] =
+  Try(s.toInt)
+
+val int = toIntX("2")
+
+
+def toIntY(s: String): Option[Int] =
+  try {
+    Some(s.toInt)
+  } catch {
+    case _ => None
+  }
+
+toIntY("bcd")
+
+case class Error(msg: String)
+
+def toIntZ(s: String): Either[Error, Int] =
+  try {
+    Right(s.toInt)
+  } catch {
+    case _ => Left(Error("error"))
+  }
+
+toIntZ("11")
+
+
+
+
 
 
 
